@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "815941156622",
+    "project_id": "vrms-c6b31",
+    "storage_bucket": "vrms-c6b31.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:815941156622:android:ef65db1dd92ed4fb63615f",
+        "android_client_info": {
+          "package_name": "com.jeff.vrms"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "815941156622-79lvf08l1d0ba27c2ic2q0hm3o2f7bfm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl72DxLf_K_6fK1_X31e8zgudRxv75R7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "815941156622-79lvf08l1d0ba27c2ic2q0hm3o2f7bfm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
