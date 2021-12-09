@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_identification_number"
             android:textSize="10sp"
-            android:id="@+id/edId"
             android:inputType="number"
-            android:maxLength="9"
+            android:id="@+id/edId"
+            android:maxLength="8"
             android:drawableStart="@drawable/ic_baseline_language_24"
             tools:ignore="SmallSp" />
 
@@ -52,6 +52,27 @@
         android:backgroundTint="@color/teal_700"
         android:text="CONTINUE"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_email"
+        android:textColor="@color/black"
+        android:id="@+id/tvUserEmail"
+        android:gravity="center"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:layout_marginVertical="20dp"
+        android:layout_width="match_parent"
+        android:id="@+id/btnLoginOut"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:text="@string/log_out"
+        android:layout_marginHorizontal="120dp"
+        />
 
 
 </LinearLayout>

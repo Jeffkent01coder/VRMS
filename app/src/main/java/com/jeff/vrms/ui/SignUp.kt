@@ -29,24 +29,26 @@ class SignUp : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnRegister.setOnClickListener {
-            val inputs = listOf(binding.idNoEt, binding.edEmail, binding.edPass, binding.edPhone)
-            inputs.forEach {
-                if (it.text!!.isEmpty()){
-                    Toast.makeText(this@SignUp,"all fields required",Toast.LENGTH_SHORT).show()
-                }
+            if (binding.edEmail.text!!.isEmpty()
+                || binding.edPass.text!!.isEmpty()
+                || binding.usernameEt.text!!.isEmpty()
+                || binding.edPhone.text!!.isEmpty()){
+                Toast.makeText(this@SignUp,"all fields required",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }else{
+                register()
             }
-           register()
         }
     }
 
     private fun register(){
         val database = FirebaseDatabase.getInstance()
-        val databaseReference = database!!.reference.child("Users")
+        val databaseReference = database.reference.child("Users")
         auth = FirebaseAuth.getInstance()
 
         val email = binding.edEmail.text.toString()
         val password = binding.edPass.text.toString()
-        val userId = binding.idNoEt.text.toString()
+        val username = binding.usernameEt.text.toString()
         val phoneNo = binding.edPhone.text.toString()
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -54,14 +56,14 @@ class SignUp : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
-                    val currentUser = auth.currentUser
-                    val user = User(userId, email, phoneNo)
-                    databaseReference?.child(userId).setValue(user)
+//                    val currentUser = auth.currentUser
+                    val user = User(username, email, phoneNo)
+                    databaseReference.child(username).setValue(user)
                     startActivity(Intent(this@SignUp, Verification::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.makeText(baseContext, "registration failed.",
                         Toast.LENGTH_SHORT).show()
                 }
             }

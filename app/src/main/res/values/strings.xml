@@ -8,7 +8,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="enter_password">Enter Password</string>
     <string name="register">REGISTER</string>
-    <string name="enter_name">Enter Id No</string>
+    <string name="enter_name">Enter username</string>
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="citizen_verification">CITIZEN VERIFICATION</string>
     <string name="voter_s_registration_form">VOTER\'S REGISTRATION FORM</string>
@@ -30,6 +30,9 @@
     <string name="t_t_t_t_t_t_add_photo_t_t_t_t_t_t_t_t_t_t_t_t_t_t_upload_fingerprint">\t\t\t\t\t\tAdd Photo\t\t\t\t\t\t\t\t\t\t\t\t\t\t Upload Fingerprint</string>
     <string name="log_out">lOG OUT</string>
     <string name="user_email">User Email</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="citizen_id">Citizen ID</string>
+    <string name="user_name">User Name</string>
 
 
 </resources>

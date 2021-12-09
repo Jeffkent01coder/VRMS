@@ -35,9 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/enter_name"
-            android:inputType="number"
             android:textSize="10sp"
-            android:id="@+id/idNoEt"
+            android:id="@+id/usernameEt"
             android:maxLength="20"
             android:drawableStart="@drawable/ic_baseline_person_24"
             tools:ignore="SmallSp" />
