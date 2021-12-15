@@ -71,48 +71,55 @@
                 android:gravity="center"
                 android:padding="10dp"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/citizen_id"
-                android:textSize="15sp"
-                android:layout_marginVertical="5dp"
-                android:layout_marginHorizontal="15dp"
-                android:gravity="center"
-                android:padding="10dp"/>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginVertical="2dp"
-                android:layout_marginHorizontal="15dp"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_date_of_birth"
-                    android:inputType="date"
-                    android:textSize="10sp"
-                    android:maxLength="11"
-                    android:drawableStart="@drawable/ic_baseline_person_24"
-                    tools:ignore="SmallSp" />
+                    android:text="@string/citizen_id"
+                    android:textSize="15sp"
+                    android:layout_marginVertical="5dp"
+                    android:id="@+id/idEd"
+                    android:layout_marginHorizontal="15dp"
+                    android:gravity="center"
+                    android:padding="10dp"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/dateEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:inputType="date"
+                android:textSize="15sp"
+                android:padding="12dp"
+                android:maxLength="11"
+                android:gravity="center"
+                tools:ignore="SmallSp" />
+
+            <Button
+                android:id="@+id/selectDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Select Date" />
+
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
                 android:layout_marginVertical="2dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ageEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_age"
-                    android:textSize="10sp"
-                    android:maxLength="2"
+                    android:inputType="number"
+                    android:textSize="15sp"
+                    android:padding="12dp"
+                    android:maxLength="11"
                     android:drawableStart="@drawable/ic_baseline_person_24"
                     tools:ignore="SmallSp" />
 
@@ -147,74 +154,99 @@
             </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="4dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/countyDd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_county"
-                    android:textSize="10sp"
-                    android:maxLength="20"
-                    android:drawableStart="@drawable/ic_baseline_language_24"
-                    tools:ignore="SmallSp" />
+                    android:text="@string/enter_county"
+                    android:inputType="none"
+                    android:padding="12dp"
+                    android:drawableStart="@drawable/ic_baseline_person_24" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="4dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/subcountyDd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_sub_county"
-                    android:textSize="10sp"
-                    android:maxLength="20"
-                    android:drawableStart="@drawable/ic_baseline_language_24"
+                    android:inputType="none"
+                    android:textSize="15sp"
+                    android:padding="12dp"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
                     tools:ignore="SmallSp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_marginVertical="2dp"
+                android:layout_marginVertical="4dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/wardDd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
                     android:hint="@string/enter_ward"
-                    android:textSize="10sp"
-                    android:id="@+id/edEmail"
-                    android:maxLength="20"
-                    android:drawableStart="@drawable/ic_baseline_language_24"
+                    android:inputType="none"
+                    android:padding="12dp"
+                    android:textSize="15sp"
                     tools:ignore="SmallSp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_marginVertical="2dp"
                 android:layout_marginHorizontal="15dp"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/locationDd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_location"
+                    android:inputType="none"
+                    android:textSize="15sp"
+                    android:padding="12dp"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    tools:ignore="SmallSp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_marginVertical="4dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/votingCenterEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/enter_voting_center"
-                    android:textSize="10sp"
-                    android:maxLength="20"
-                    android:drawableStart="@drawable/ic_baseline_language_24"
+                    android:inputType="none"
+                    android:textSize="15sp"
+                    android:padding="12dp"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
                     tools:ignore="SmallSp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -227,9 +259,9 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/cam"
+                    android:id="@+id/camPicker"
                     android:layout_width="100dp"
-                    android:layout_height="50dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/ic_baseline_add_a_photo_24"
                     />
 
@@ -256,6 +288,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/submitBtn"
                 android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

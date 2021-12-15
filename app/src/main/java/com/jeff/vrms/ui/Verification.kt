@@ -23,6 +23,13 @@ class Verification : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        binding = ActivityVerificationBinding.inflate(layoutInflater)
+        super.onCreate(savedInstanceState)
+        binding = ActivityVerificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        supportActionBar?.hide()
+
         auth = FirebaseAuth.getInstance()
 
         if (auth.currentUser != null){
@@ -36,10 +43,6 @@ class Verification : AppCompatActivity() {
             startActivity(Intent(this, Login::class.java))
         }
 
-        binding = ActivityVerificationBinding.inflate(layoutInflater)
-        supportActionBar?.hide()
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
         binding.btnContinue.setOnClickListener {
             if (binding.edId.text!!.isEmpty()){
                 Toast.makeText(this@Verification,"enter id number!",Toast.LENGTH_SHORT).show()
@@ -49,9 +52,6 @@ class Verification : AppCompatActivity() {
             }
 
         }
-
-
-
     }
 
     private fun checkData() {

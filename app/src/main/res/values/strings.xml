@@ -12,7 +12,7 @@
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="citizen_verification">CITIZEN VERIFICATION</string>
     <string name="voter_s_registration_form">VOTER\'S REGISTRATION FORM</string>
-        <string name="register_and_submit">Register and Submit</string>
+        <string name="register_and_submit">Submit</string>
     <string name="enter_identification_number">Enter Identification Number</string>
     <string name="enter_date_of_birth">Enter Date Of Birth</string>
     <string name="enter_age">Enter Age</string>
@@ -20,10 +20,11 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="select_your_gender">Select Your Gender</string>
-    <string name="enter_county">Enter County</string>
-    <string name="enter_sub_county">Enter Sub-County</string>
-    <string name="enter_ward">Enter Ward</string>
-    <string name="enter_voting_center">Enter Voting Center</string>
+    <string name="enter_county">Select County</string>
+    <string name="enter_sub_county">Select Sub-County</string>
+    <string name="enter_ward">Select Ward</string>
+    <string name="enter_location">Select Location</string>
+    <string name="enter_voting_center">Select Voting Center</string>
     <string name="county">County</string>
     <string name="visit_our_website">Visit Our Website</string>
     <string name="vrms_co_ke">vrms.co.ke</string>
