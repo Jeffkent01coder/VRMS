@@ -41,6 +41,10 @@ class Registration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.tvWeb.setOnClickListener {
+            startActivity(Intent(this, Web::class.java))
+        }
+
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker,year: Int,monthOfYear: Int,
                                    dayOfMonth: Int) {

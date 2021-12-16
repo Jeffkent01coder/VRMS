@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jeff.vrms">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icke"
@@ -11,6 +15,9 @@
         android:roundIcon="@drawable/icke"
         android:supportsRtl="true"
         android:theme="@style/Theme.VRMS">
+        <activity
+            android:name=".ui.Web"
+            android:exported="true" />
         <activity
             android:name=".ui.Details"
             android:exported="true" />

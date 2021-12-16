@@ -12,7 +12,7 @@
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="citizen_verification">CITIZEN VERIFICATION</string>
     <string name="voter_s_registration_form">VOTER\'S REGISTRATION FORM</string>
-        <string name="register_and_submit">Submit</string>
+    <string name="register_and_submit">Submit</string>
     <string name="enter_identification_number">Enter Identification Number</string>
     <string name="enter_date_of_birth">Enter Date Of Birth</string>
     <string name="enter_age">Enter Age</string>
