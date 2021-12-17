@@ -31,7 +31,7 @@ class SignUp : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             if (binding.edEmail.text!!.isEmpty()
                 || binding.edPass.text!!.isEmpty()
-                || binding.usernameEt.text!!.isEmpty()
+                || binding.nameEt.text!!.isEmpty()
                 || binding.edPhone.text!!.isEmpty()){
                 Toast.makeText(this@SignUp,"all fields required",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -48,7 +48,7 @@ class SignUp : AppCompatActivity() {
 
         val email = binding.edEmail.text.toString()
         val password = binding.edPass.text.toString()
-        val username = binding.usernameEt.text.toString()
+        val username = binding.nameEt.text.toString()
         val phoneNo = binding.edPhone.text.toString()
 
         auth.createUserWithEmailAndPassword(email, password)

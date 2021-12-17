@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_name"
             android:textSize="10sp"
-            android:id="@+id/usernameEt"
+            android:id="@+id/nameEt"
             android:maxLength="20"
             android:drawableStart="@drawable/ic_baseline_person_24"
             tools:ignore="SmallSp" />

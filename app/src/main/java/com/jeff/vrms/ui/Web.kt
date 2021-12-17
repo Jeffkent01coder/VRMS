@@ -11,7 +11,5 @@ class Web : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        binding.webview.loadUrl("file:///android_asset/vrms/home.html")
     }
 }

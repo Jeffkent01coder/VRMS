@@ -28,6 +28,9 @@ class Verification : AppCompatActivity() {
         binding = ActivityVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
         supportActionBar?.hide()
 
         auth = FirebaseAuth.getInstance()
@@ -61,7 +64,12 @@ class Verification : AppCompatActivity() {
         val postListener = object : ValueEventListener1 {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists() || dataSnapshot.hasChild("refId")){
+                    val intent = Intent(this@Verification, Details::class.java)
+                    intent.putExtra("IdNo", idNo)
+                    startActivity(intent)
+                    finish()
+                }else if (dataSnapshot.exists()){
                     val intent = Intent(this@Verification, Registration::class.java)
                     intent.putExtra("IdNo", idNo)
                     startActivity(intent)

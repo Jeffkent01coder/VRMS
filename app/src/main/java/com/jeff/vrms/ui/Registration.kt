@@ -1,39 +1,32 @@
 package com.jeff.vrms.ui
 
-import android.R.style.Theme_Holo_Light_Dialog_MinWidth
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.ActivityNotFoundException
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
-import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.DatePicker
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+import android.widget.*
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import com.jeff.vrms.R
 import com.jeff.vrms.databinding.ActivityRegistrationBinding
-import com.jeff.vrms.models.County
+import com.jeff.vrms.models.UserRegData
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class Registration : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistrationBinding
     private lateinit var database: DatabaseReference
+    private lateinit var imageSaved: Bitmap
 
     private val REQUEST_IMAGE_CAPTURE = 1
 
     var cal = Calendar.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
@@ -45,6 +38,9 @@ class Registration : AppCompatActivity() {
             startActivity(Intent(this, Web::class.java))
         }
 
+        val intent = intent
+        val idNo = intent.getStringExtra("IdNo").toString()
+
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker,year: Int,monthOfYear: Int,
                                    dayOfMonth: Int) {
@@ -55,40 +51,116 @@ class Registration : AppCompatActivity() {
             }
         }
 
-        val counties = arrayListOf<String>()
-        val subcounties = arrayListOf<String>()
+//        val county: St
+//        val counties = mutableListOf<String>()
+//        val subcounties = mutableListOf<String>()
+//        val wards = mutableListOf<String>()
+//        val locations = mutableListOf<String>()
+//        val centers = mutableListOf<String>()
 
-        val dbCounty = FirebaseDatabase.getInstance().getReference("Counties")
-        dbCounty.addValueEventListener(object :ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()){
-                    for (countySnapshot in snapshot.children){
-                        counties.add(countySnapshot.key.toString())
-                        binding.countyDd.setOnFocusChangeListener { view, b ->
-                            val selectedCounty = binding.countyDd.text.toString()
-                            val dbSubCounty = dbCounty.child(selectedCounty)
-                            dbSubCounty.addValueEventListener(object: ValueEventListener{
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    if (snapshot.exists()){
-                                        for (i in snapshot.children){
-                                            subcounties.add(i.key.toString())
-                                        }
-                                    }
-                                }
+        //drop down data
+//        val dbCounty = FirebaseDatabase.getInstance().getReference("Counties")
+//        dbCounty.addValueEventListener(object :ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if (snapshot.exists()){
+//                    for (countySnapshot in snapshot.children){
+//                        counties.add(countySnapshot.key.toString())
+//                        binding.countyDd.setOnFocusChangeListener { _,_ ->
+//                            val selectedCounty = binding.countyDd.text.toString()
+//                            val dbSubCounty = dbCounty.child(selectedCounty)
+//                            dbSubCounty.addValueEventListener(object: ValueEventListener{
+//                                override fun onDataChange(snapshot: DataSnapshot) {
+//                                    if (snapshot.exists()){
+//                                        for (i in snapshot.children){
+//                                            subcounties.add(i.key.toString())
+//                                            binding.subcountyDd.setOnFocusChangeListener { _, _ ->
+//                                                binding.subcountyDd.clearListSelection()
+//                                                subcounties.clear()
+//                                                val selectedSubCounty = binding.subcountyDd.text.toString()
+//                                                val dbWard = dbSubCounty.child(selectedSubCounty)
+//                                                dbWard.addValueEventListener(object : ValueEventListener{
+//                                                    override fun onDataChange(snapshot: DataSnapshot) {
+//                                                        if (snapshot.exists()){
+//                                                            for (ward in snapshot.children){
+//                                                                wards.add(ward.key.toString())
+//                                                                binding.wardDd.setOnFocusChangeListener { _, _ ->
+//                                                                    binding.wardDd.clearListSelection()
+//                                                                    wards.clear()
+//                                                                    val selectedWard = binding.wardDd.text.toString()
+//                                                                    val dblocation = dbWard.child(selectedWard)
+//                                                                    dblocation.addValueEventListener(object: ValueEventListener{
+//                                                                        override fun onDataChange(
+//                                                                            snapshot: DataSnapshot
+//                                                                        ) {
+//                                                                            if (snapshot.exists()){
+//                                                                                for (loc in snapshot.children){
+//                                                                                    locations.add(loc.key.toString())
+//                                                                                    binding.locationDd.setOnFocusChangeListener { _, _ ->
+//                                                                                        binding.locationDd.clearListSelection()
+//                                                                                        locations.clear()
+//                                                                                        val selectedLocation = binding.locationDd.text.toString()
+//                                                                                        val dbcenter = dblocation.child(selectedLocation)
+//                                                                                        dbcenter.addValueEventListener(object: ValueEventListener{
+//                                                                                            override fun onDataChange(snapshot: DataSnapshot) {
+//                                                                                                if (snapshot.exists()){
+//                                                                                                    for (cent in snapshot.children){
+//                                                                                                        centers.add(cent.value.toString())
+//                                                                                                        binding.votingCenterDd.clearListSelection()
+////                                                                                                        centers.clear()
+//                                                                                                    }
+//                                                                                                }
+//                                                                                            }
+//
+//                                                                                            override fun onCancelled(
+//                                                                                                error: DatabaseError
+//                                                                                            ) {
+//                                                                                                TODO(
+//                                                                                                    "Not yet implemented"
+//                                                                                                )
+//                                                                                            }
+//
+//                                                                                        })
+//                                                                                    }
+//                                                                                }
+//                                                                            }
+//                                                                        }
+//
+//                                                                        override fun onCancelled(
+//                                                                            error: DatabaseError
+//                                                                        ) {
+//                                                                            TODO("Not yet implemented")
+//                                                                        }
+//
+//                                                                    })
+//                                                                }
+//                                                            }
+//                                                        }
+//                                                    }
+//
+//                                                    override fun onCancelled(error: DatabaseError) {
+//                                                        TODO("Not yet implemented")
+//                                                    }
+//
+//                                                })
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//
+//                                override fun onCancelled(error: DatabaseError) {
+//                                    TODO("Not yet implemented")
+//                                }
+//
+//                            })
+//                        }
+//                    }
+//                }
+//            }
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.w(TAG, "loadPost:onCancelled", error.toException())
+//            }
+//        })
 
-                                override fun onCancelled(error: DatabaseError) {
-                                    TODO("Not yet implemented")
-                                }
-
-                            })
-                        }
-                    }
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "loadPost:onCancelled", error.toException())
-            }
-        })
 
 
         binding.selectDate.setOnClickListener {
@@ -101,9 +173,6 @@ class Registration : AppCompatActivity() {
         }
 
         database = FirebaseDatabase.getInstance().getReference("IdNos")
-
-        val intent = intent
-        val idNo = intent.getStringExtra("IdNo").toString()
 
         database.child(idNo).get().addOnSuccessListener {
             if (it.exists()){
@@ -118,24 +187,58 @@ class Registration : AppCompatActivity() {
             }
         }
 
-        val ward = arrayOf("gcdbsjd", "dsc")
-        val location = arrayOf("DF","WE")
-        val center = arrayOf("kithino", "kianamuthi")
-        val countiesArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, counties)
-        val subArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, subcounties)
-        val wardArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, ward)
-        val loactionArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, location)
-        val centerArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, center)
-        binding.countyDd.setAdapter(countiesArrayAdapter)
-        binding.subcountyDd.clearListSelection()
-        binding.subcountyDd.setAdapter(subArrayAdapter)
-        binding.wardDd.setAdapter(wardArrayAdapter)
-        binding.locationDd.setAdapter(loactionArrayAdapter)
-        binding.votingCenterEt.setAdapter(centerArrayAdapter)
+
+
+//        val countiesArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, counties)
+//        val subArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, subcounties)
+//        val wardArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, wards)
+//        val locationArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, locations)
+//        val centerArrayAdapter = ArrayAdapter(this, R.layout.dropdown_item, centers)
+//        binding.countyDd.setAdapter(countiesArrayAdapter)
+
+
+//        binding.subcountyDd.setAdapter(subArrayAdapter)
+//        binding.wardDd.setAdapter(wardArrayAdapter)
+//        binding.locationDd.setAdapter(locationArrayAdapter)
+//        binding.votingCenterDd.setAdapter(centerArrayAdapter)
 
         binding.camPicker.setOnClickListener {
             imageGet()
         }
+        binding.submitBtn.setOnClickListener {
+            submitForm(idNo)
+        }
+
+    }
+
+    fun submitForm(idNo: String) {
+
+        val gender = when(binding.radioGroup.checkedRadioButtonId){
+            R.id.genderMale -> "male"
+            else -> "female"
+        }
+        val databaseReg = FirebaseDatabase.getInstance().getReference("IdNos")
+
+        val data = UserRegData(
+            1,
+            binding.NameEd!!.text!!.toString(),
+            binding.dateEt.text.toString(),
+            binding.ageEt.text.toString(),
+            gender,
+            binding.countyDd.text.toString(),
+            binding.subcountyDd.text.toString(),
+            binding.wardDd.text.toString(),
+            binding.votingCenterDd.text.toString())
+
+        databaseReg.child(idNo).setValue(data).addOnSuccessListener {
+            Toast.makeText(this,"added successfully",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Details::class.java)
+            intent.putExtra("idNo", idNo)
+            startActivity(intent)
+            finish()
+        }.addOnFailureListener{
+                Toast.makeText(this,"not saved",Toast.LENGTH_SHORT).show()
+            }
 
     }
 
@@ -146,13 +249,14 @@ class Registration : AppCompatActivity() {
             } catch (e: ActivityNotFoundException) {
                 // display error state to the user
             }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode,resultCode,data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data!!.extras!!.get("data") as Bitmap
-            binding.camPicker.setImageBitmap(imageBitmap)
+            imageSaved = data!!.extras!!.get("data") as Bitmap
+            binding.camPicker.setImageBitmap(imageSaved)
         }
     }
 
